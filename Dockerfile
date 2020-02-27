@@ -1,4 +1,4 @@
-FROM golang:1.12 AS go-build
+FROM golang:1.13-alpine AS go-build
 WORKDIR /app
 COPY . ./
 RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o server
