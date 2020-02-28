@@ -97,7 +97,7 @@ func main() {
 		GetHandler()
 
 	srv := &http.Server{
-		Handler: handlers.LoggingHandler(os.Stdout, r),
+		Handler: handlers.CORS(handlers.AllowedOrigins([]string{"*"}))(handlers.LoggingHandler(os.Stdout, r)),
 		Addr:    "0.0.0.0:80",
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
